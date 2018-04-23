@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
+
+var path = require('path');
 var port = process.env.PORT || 3000;
-app.get('/',(req, res) => res.send('Hello World'));
+
+//app.get('/',(req, res) => res.send('Hello World'));
+
 app.listen (port, () => console.log('Server is running on port'+ port));
 
 var urlsEach = {
@@ -12,3 +16,8 @@ var urlsEach = {
     "https://newtestdocument.azurewebsites.net/Format.json":"./files/Thad/my-information.json"
 }
 var groupFile = './files/Group/group-information'
+
+app.get('/', function(req, res){
+    res.sendfile(path.join(__dirname + '/index.html'));
+    console.log(port);
+});
